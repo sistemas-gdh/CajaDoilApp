@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.SolicitudCaja" table="solicitud_caja" catalog="caja_doil" optimistic-lock="version">
+        <id name="scId" type="java.lang.Long">
+            <column name="sc_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuarios" class="Modelo.Usuarios" fetch="select">
+            <column name="usuario_id" />
+        </many-to-one>
+        <property name="scSerie" type="string">
+            <column name="sc_serie" length="75" />
+        </property>
+        <property name="spFecha" type="timestamp">
+            <column name="sp_fecha" length="19" />
+        </property>
+        <property name="spTm" type="java.lang.Integer">
+            <column name="sp_tm" />
+        </property>
+        <property name="scDesc" type="string">
+            <column name="sc_desc" length="75" />
+        </property>
+        <property name="scImporte" type="java.lang.Double">
+            <column name="sc_importe" precision="22" scale="0" />
+        </property>
+        <property name="scAprob1" type="java.lang.Integer">
+            <column name="sc_aprob1" />
+        </property>
+        <property name="scAprob2" type="java.lang.Integer">
+            <column name="sc_aprob2" />
+        </property>
+        <property name="scAprob3" type="java.lang.Integer">
+            <column name="sc_aprob3" />
+        </property>
+        <property name="scCorrelativo" type="java.lang.Long">
+            <column name="sc_correlativo" />
+        </property>
+        <property name="scEstado" type="java.lang.Integer">
+            <column name="sc_estado" />
+        </property>
+        <set name="detalleScs" table="detalle_sc" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sc_id" />
+            </key>
+            <one-to-many class="Modelo.DetalleSc" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.SmViaticos" table="sm_viaticos" catalog="caja_doil" optimistic-lock="version">
+        <id name="VId" type="java.lang.Long">
+            <column name="v_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="subMcs" class="Modelo.SubMcs" fetch="select">
+            <column name="sm_id" />
+        </many-to-one>
+        <property name="VDesc" type="string">
+            <column name="v_desc" length="75" />
+        </property>
+        <property name="VImporte" type="java.lang.Double">
+            <column name="v_importe" precision="22" scale="0" />
+        </property>
+        <property name="VDocfecha" type="date">
+            <column name="v_docfecha" length="10" />
+        </property>
+        <property name="VDocserie" type="string">
+            <column name="v_docserie" length="30" />
+        </property>
+        <property name="VProveedor" type="string">
+            <column name="v_proveedor" length="90" />
+        </property>
+        <property name="VDoc" type="string">
+            <column name="v_doc" length="25" />
+        </property>
+        <property name="VEstado" type="java.lang.Integer">
+            <column name="v_estado" />
+        </property>
+    </class>
+</hibernate-mapping>

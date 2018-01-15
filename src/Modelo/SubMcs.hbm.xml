@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.SubMcs" table="sub_mcs" catalog="caja_doil" optimistic-lock="version">
+        <id name="smId" type="java.lang.Long">
+            <column name="sm_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="choferes" class="Modelo.Choferes" fetch="select">
+            <column name="ch_id" />
+        </many-to-one>
+        <many-to-one name="movimientosCajas" class="Modelo.MovimientosCajas" fetch="select">
+            <column name="mcs_id" />
+        </many-to-one>
+        <many-to-one name="remolques" class="Modelo.Remolques" fetch="select">
+            <column name="r_id" />
+        </many-to-one>
+        <many-to-one name="servTransporte" class="Modelo.ServTransporte" fetch="select">
+            <column name="st_id" />
+        </many-to-one>
+        <many-to-one name="tractos" class="Modelo.Tractos" fetch="select">
+            <column name="t_id" />
+        </many-to-one>
+        <property name="smViaticos" type="java.lang.Double">
+            <column name="sm_viaticos" precision="22" scale="0" />
+        </property>
+        <property name="smHospedaje" type="java.lang.Double">
+            <column name="sm_hospedaje" precision="22" scale="0" />
+        </property>
+        <property name="smEnc" type="java.lang.Double">
+            <column name="sm_enc" precision="22" scale="0" />
+        </property>
+        <property name="smDesc" type="java.lang.Double">
+            <column name="sm_desc" precision="22" scale="0" />
+        </property>
+        <property name="smVigilancia" type="java.lang.Double">
+            <column name="sm_vigilancia" precision="22" scale="0" />
+        </property>
+        <property name="smPropina" type="java.lang.Double">
+            <column name="sm_propina" precision="22" scale="0" />
+        </property>
+        <property name="smTotal" type="java.lang.Double">
+            <column name="sm_total" precision="22" scale="0" />
+        </property>
+        <property name="smTotalliq" type="java.lang.Double">
+            <column name="sm_totalliq" precision="22" scale="0" />
+        </property>
+        <property name="smDevolucion" type="java.lang.Double">
+            <column name="sm_devolucion" precision="22" scale="0" />
+        </property>
+        <property name="smReintegro" type="java.lang.Double">
+            <column name="sm_reintegro" precision="22" scale="0" />
+        </property>
+        <property name="smEstado" type="java.lang.Integer">
+            <column name="sm_estado" />
+        </property>
+        <set name="smDescs" table="sm_desc" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sm_id" />
+            </key>
+            <one-to-many class="Modelo.SmDesc" />
+        </set>
+        <set name="smHospedajes" table="sm_hospedaje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sm_id" />
+            </key>
+            <one-to-many class="Modelo.SmHospedaje" />
+        </set>
+        <set name="smViaticoses" table="sm_viaticos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sm_id" />
+            </key>
+            <one-to-many class="Modelo.SmViaticos" />
+        </set>
+        <set name="smVigilancias" table="sm_vigilancia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sm_id" />
+            </key>
+            <one-to-many class="Modelo.SmVigilancia" />
+        </set>
+        <set name="smPropinas" table="sm_propina" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sm_id" />
+            </key>
+            <one-to-many class="Modelo.SmPropina" />
+        </set>
+        <set name="smEncs" table="sm_enc" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sm_id" />
+            </key>
+            <one-to-many class="Modelo.SmEnc" />
+        </set>
+    </class>
+</hibernate-mapping>

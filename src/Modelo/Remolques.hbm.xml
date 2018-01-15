@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Remolques" table="remolques" catalog="caja_doil" optimistic-lock="version">
+        <id name="RId" type="java.lang.Integer">
+            <column name="r_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tipoRemolque" class="Modelo.TipoRemolque" fetch="select">
+            <column name="tr_id" />
+        </many-to-one>
+        <property name="RPlaca" type="string">
+            <column name="r_placa" length="10" />
+        </property>
+        <property name="RPesoutil" type="java.lang.Double">
+            <column name="r_pesoutil" precision="22" scale="0" />
+        </property>
+        <property name="RAfab" type="date">
+            <column name="r_afab" length="10" />
+        </property>
+        <property name="RModelo" type="string">
+            <column name="r_modelo" length="75" />
+        </property>
+        <property name="RRegmtc" type="string">
+            <column name="r_regmtc" length="50" />
+        </property>
+        <property name="REstado" type="java.lang.Integer">
+            <column name="r_estado" />
+        </property>
+        <set name="subMcses" table="sub_mcs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="r_id" />
+            </key>
+            <one-to-many class="Modelo.SubMcs" />
+        </set>
+        <set name="detalleSvs" table="detalle_sv" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="r_id" />
+            </key>
+            <one-to-many class="Modelo.DetalleSv" />
+        </set>
+    </class>
+</hibernate-mapping>

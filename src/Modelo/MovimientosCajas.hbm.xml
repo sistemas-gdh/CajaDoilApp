@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.MovimientosCajas" table="movimientos_cajas" catalog="caja_doil" optimistic-lock="version">
+        <id name="mcsId" type="java.lang.Long">
+            <column name="mcs_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuarios" class="Modelo.Usuarios" fetch="select">
+            <column name="usuario_id" />
+        </many-to-one>
+        <property name="mcsSerie" type="string">
+            <column name="mcs_serie" length="75" />
+        </property>
+        <property name="mcsFecha" type="date">
+            <column name="mcs_fecha" length="10" />
+        </property>
+        <property name="mcsDesc" type="string">
+            <column name="mcs_desc" length="75" />
+        </property>
+        <property name="mcsImporte" type="java.lang.Double">
+            <column name="mcs_importe" precision="22" scale="0" />
+        </property>
+        <property name="mcsImportel" type="java.lang.Double">
+            <column name="mcs_importel" precision="22" scale="0" />
+        </property>
+        <property name="mcsDevolucion" type="java.lang.Double">
+            <column name="mcs_devolucion" precision="22" scale="0" />
+        </property>
+        <property name="mcsReintegro" type="java.lang.Double">
+            <column name="mcs_reintegro" precision="22" scale="0" />
+        </property>
+        <property name="mcsUsersol" type="java.lang.Integer">
+            <column name="mcs_usersol" />
+        </property>
+        <property name="mcsEstado" type="java.lang.Integer">
+            <column name="mcs_estado" />
+        </property>
+        <property name="mcsCorrelativo" type="java.lang.Long">
+            <column name="mcs_correlativo" />
+        </property>
+        <property name="mcsInout" type="java.lang.Integer">
+            <column name="mcs_inout" />
+        </property>
+        <set name="detalleMcses" table="detalle_mcs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mcs_id" />
+            </key>
+            <one-to-many class="Modelo.DetalleMcs" />
+        </set>
+        <set name="subMcses" table="sub_mcs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mcs_id" />
+            </key>
+            <one-to-many class="Modelo.SubMcs" />
+        </set>
+        <set name="saldoCajases" table="saldo_cajas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mcs_id" />
+            </key>
+            <one-to-many class="Modelo.SaldoCajas" />
+        </set>
+    </class>
+</hibernate-mapping>

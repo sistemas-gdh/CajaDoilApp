@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.DetalleMcd" table="detalle_mcd" catalog="caja_doil" optimistic-lock="version">
+        <id name="dmcdId" type="java.lang.Long">
+            <column name="dmcd_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="movimientosCajasd" class="Modelo.MovimientosCajasd" fetch="select">
+            <column name="mcd_id" />
+        </many-to-one>
+        <property name="unidadmId" type="string">
+            <column name="unidadm_id" length="10" />
+        </property>
+        <property name="dmcdDesc" type="string">
+            <column name="dmcd_desc" length="150" />
+        </property>
+        <property name="dmcdCant" type="java.lang.Double">
+            <column name="dmcd_cant" precision="22" scale="0" />
+        </property>
+        <property name="dmcdImporte" type="java.lang.Double">
+            <column name="dmcd_importe" precision="22" scale="0" />
+        </property>
+        <property name="dmcdSt" type="java.lang.Double">
+            <column name="dmcd_st" precision="22" scale="0" />
+        </property>
+        <property name="dmcdDoc" type="string">
+            <column name="dmcd_doc" length="10" />
+        </property>
+        <property name="dmcdProveedor" type="string">
+            <column name="dmcd_proveedor" length="100" />
+        </property>
+        <property name="dmcdDocserie" type="string">
+            <column name="dmcd_docserie" length="35" />
+        </property>
+        <property name="dmcdDoctotal" type="java.lang.Double">
+            <column name="dmcd_doctotal" precision="22" scale="0" />
+        </property>
+        <property name="dmcdDocfecha" type="date">
+            <column name="dmcd_docfecha" length="10" />
+        </property>
+        <property name="dmcdEstado" type="java.lang.Integer">
+            <column name="dmcd_estado" />
+        </property>
+    </class>
+</hibernate-mapping>

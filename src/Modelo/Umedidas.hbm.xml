@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Umedidas" table="umedidas" catalog="caja_doil" optimistic-lock="version">
+        <id name="unidadmId" type="java.lang.Integer">
+            <column name="unidadm_id" />
+            <generator class="identity" />
+        </id>
+        <property name="unidadmDesc" type="string">
+            <column name="unidadm_desc" length="10" />
+        </property>
+        <property name="unidadmEstado" type="java.lang.Integer">
+            <column name="unidadm_estado" />
+        </property>
+        <set name="detalleScs" table="detalle_sc" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="unidadm_id" />
+            </key>
+            <one-to-many class="Modelo.DetalleSc" />
+        </set>
+    </class>
+</hibernate-mapping>

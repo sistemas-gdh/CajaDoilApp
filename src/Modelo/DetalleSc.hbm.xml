@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.DetalleSc" table="detalle_sc" catalog="caja_doil" optimistic-lock="version">
+        <id name="dscId" type="java.lang.Long">
+            <column name="dsc_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="solicitudCaja" class="Modelo.SolicitudCaja" fetch="select">
+            <column name="sc_id" />
+        </many-to-one>
+        <many-to-one name="umedidas" class="Modelo.Umedidas" fetch="select">
+            <column name="unidadm_id" />
+        </many-to-one>
+        <property name="dscDesc" type="string">
+            <column name="dsc_desc" length="250" />
+        </property>
+        <property name="dscUso" type="string">
+            <column name="dsc_uso" length="75" />
+        </property>
+        <property name="dscCantidad" type="java.lang.Double">
+            <column name="dsc_cantidad" precision="22" scale="0" />
+        </property>
+        <property name="dscImporte" type="java.lang.Double">
+            <column name="dsc_importe" precision="22" scale="0" />
+        </property>
+        <property name="dscSt" type="java.lang.Double">
+            <column name="dsc_st" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

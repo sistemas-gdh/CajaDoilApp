@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.TipoTservicio" table="tipo_tservicio" catalog="caja_doil" optimistic-lock="version">
+        <id name="tsId" type="java.lang.Integer">
+            <column name="ts_id" />
+            <generator class="identity" />
+        </id>
+        <property name="tsDesc" type="string">
+            <column name="ts_desc" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

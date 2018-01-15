@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Usuarios" table="usuarios" catalog="caja_doil" optimistic-lock="version">
+        <id name="usuarioId" type="java.lang.Integer">
+            <column name="usuario_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cargos" class="Modelo.Cargos" fetch="select">
+            <column name="cargo_id" />
+        </many-to-one>
+        <many-to-one name="departamentos" class="Modelo.Departamentos" fetch="select">
+            <column name="dpto_id" />
+        </many-to-one>
+        <property name="usuarioUser" type="string">
+            <column name="usuario_user" length="30" />
+        </property>
+        <property name="usuarioPassword" type="string">
+            <column name="usuario_password" length="35" />
+        </property>
+        <property name="usuarioNombres" type="string">
+            <column name="usuario_nombres" length="95" />
+        </property>
+        <property name="usuarioPermisos" type="java.lang.Integer">
+            <column name="usuario_permisos" />
+        </property>
+        <property name="usuarioEstado" type="java.lang.Integer">
+            <column name="usuario_estado" />
+        </property>
+        <set name="movimientosCajasds" table="movimientos_cajasd" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" />
+            </key>
+            <one-to-many class="Modelo.MovimientosCajasd" />
+        </set>
+        <set name="solicitudViaticoses" table="solicitud_viaticos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" />
+            </key>
+            <one-to-many class="Modelo.SolicitudViaticos" />
+        </set>
+        <set name="movimientosCajases" table="movimientos_cajas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" />
+            </key>
+            <one-to-many class="Modelo.MovimientosCajas" />
+        </set>
+        <set name="solicitudCajas" table="solicitud_caja" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" />
+            </key>
+            <one-to-many class="Modelo.SolicitudCaja" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7707392-e9a2-4075-b7ac-fce27fe09344">
+	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="384"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="codscc" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     solicitud_caja.`sc_id` AS solicitud_caja_sc_id,
+     solicitud_caja.`sc_serie` AS solicitud_caja_sc_serie,
+     solicitud_caja.`sp_fecha` AS solicitud_caja_sp_fecha,
+     solicitud_caja.`sp_tm` AS solicitud_caja_sp_tm,
+     solicitud_caja.`sc_desc` AS solicitud_caja_sc_desc,
+     solicitud_caja.`sc_aprob1` AS solicitud_caja_sc_aprob1,
+     solicitud_caja.`sc_aprob2` AS solicitud_caja_sc_aprob2,
+     solicitud_caja.`sc_aprob3` AS solicitud_caja_sc_aprob3,
+     usuarios.`usuario_nombres` AS usuarios_usuario_nombres,
+     usuarios.`usuario_user` AS usuarios_usuario_user,
+     solicitud_caja.`sc_importe` AS solicitud_caja_sc_importe,
+     cargos.`cargo_desc` AS cargos_cargo_desc,
+     departamentos.`dpto_desc` AS departamentos_dpto_desc
+FROM
+     `usuarios` usuarios INNER JOIN `solicitud_caja` solicitud_caja ON usuarios.`usuario_id` = solicitud_caja.`usuario_id`
+     INNER JOIN `cargos` cargos ON usuarios.`cargo_id` = cargos.`cargo_id`
+     INNER JOIN `departamentos` departamentos ON usuarios.`dpto_id` = departamentos.`dpto_id`
+WHERE
+solicitud_caja.`sc_id` = $P{codscc}]]>
+	</queryString>
+	<field name="solicitud_caja_sc_id" class="java.lang.Integer"/>
+	<field name="solicitud_caja_sc_serie" class="java.lang.String"/>
+	<field name="solicitud_caja_sp_fecha" class="java.sql.Timestamp"/>
+	<field name="solicitud_caja_sp_tm" class="java.lang.Integer"/>
+	<field name="solicitud_caja_sc_desc" class="java.lang.String"/>
+	<field name="solicitud_caja_sc_aprob1" class="java.lang.Integer"/>
+	<field name="solicitud_caja_sc_aprob2" class="java.lang.Integer"/>
+	<field name="solicitud_caja_sc_aprob3" class="java.lang.Integer"/>
+	<field name="usuarios_usuario_nombres" class="java.lang.String"/>
+	<field name="usuarios_usuario_user" class="java.lang.String"/>
+	<field name="solicitud_caja_sc_importe" class="java.lang.Double"/>
+	<field name="cargos_cargo_desc" class="java.lang.String"/>
+	<field name="departamentos_dpto_desc" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<frame>
+				<reportElement uuid="2bb5895f-c6a7-4e54-8dc4-edb5f5817ad1" mode="Opaque" x="0" y="73" width="555" height="24" forecolor="#000000" backcolor="#CC0000"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="7334f3b1-f0e7-410b-9717-9330cd8641ac" x="409" y="0" width="144" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Microsoft Sans Serif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement uuid="00e4ac78-ad74-493a-a152-e92178746c34" x="236" y="0" width="319" height="53"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SOLICITUD DE CAJA CHICA \n"+$F{solicitud_caja_sc_serie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c1ae66d4-f6bd-4241-b6ea-42b1a25d6d7b" x="69" y="13" width="167" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DOIL INTERNATIONAL S.A.C.]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="f9394505-88a4-452d-9a35-fa6c6a001fe4" x="2" y="0" width="67" height="53"/>
+				<imageExpression><![CDATA["C:\\cajareport\\thumbnail_thumbnail_D_opt.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="c1ae66d4-f6bd-4241-b6ea-42b1a25d6d7b" x="69" y="33" width="167" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[20546139973]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c1ae66d4-f6bd-4241-b6ea-42b1a25d6d7b" x="0" y="53" width="236" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Av. Ventanilla Mz. G Lte. 95 - Puente Piedra - Lima]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="4" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="432" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6ba5e14a-53ca-4af4-945b-c3e4ce8b52a9" style="Column header" x="4" y="159" width="107" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Departamento:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="67168751-75d9-4819-8ebb-a3707307cff7" style="Detail" positionType="Float" x="125" y="159" width="162" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{departamentos_dpto_desc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="927b942b-9e39-47bf-a21e-7fe8b385016d" style="Column header" x="4" y="141" width="107" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cargo:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="51a7ef91-3754-4e78-8090-4d8118862762" style="Detail" positionType="Float" x="125" y="141" width="406" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cargos_cargo_desc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a4e3a413-dbe7-493f-b2a0-0f3c483d0b29" style="Column header" x="4" y="192" width="107" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Importe:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="e6b152b5-5c5e-4f70-bfa5-d1b149071d5e" style="Detail" positionType="Float" x="125" y="192" width="162" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_caja_sc_importe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b6be9da6-1a2e-4a3a-af42-6c41610038d0" style="Column header" x="9" y="291" width="102" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="4977e34e-f070-4b8b-8736-81906febdd39" style="Detail" positionType="Float" x="175" y="291" width="162" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarios_usuario_user}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f3a18b6a-931f-49ac-8c1d-d2eb2fea3825" style="Column header" x="2" y="123" width="109" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Responsable:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="4aa57212-e279-4a14-9de3-92570605824c" style="Detail" positionType="Float" x="125" y="123" width="162" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarios_usuario_nombres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="bf137f59-ec1d-4ab3-983c-66e0894ddbbd" style="Column header" x="0" y="10" width="111" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="65f3b895-2eb2-4f5a-9cb5-18d6c653bab7" style="Detail" positionType="Float" x="125" y="10" width="162" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_caja_sp_fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9fcf32bd-0eec-47cc-93c5-a783baaeb6a2" style="Column header" x="313" y="192" width="109" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Moneda:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="73312dd5-9679-403d-9c7a-4da564c179fa" style="Detail" positionType="Float" x="433" y="192" width="98" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_caja_sp_tm}.intValue() == 1?"SOLES":"DOLARES"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="652bc737-66f2-48e2-9ce4-b4c726b5bd6c" style="Column header" x="2" y="30" width="109" height="36" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Descripción:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a60e659-ee5f-45fb-95db-943e661937a7" style="Column header" x="9" y="223" width="152" height="18" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[V°B° Gerente General:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="462580b9-411b-4407-8190-50035159f2f9" style="Detail" positionType="Float" x="175" y="225" width="162" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_caja_sc_aprob1}.intValue() == 1?"APROBADO":$F{solicitud_caja_sc_aprob1}.intValue() == 2?"DENEGADO":$F{solicitud_caja_sc_aprob1}.intValue() == 0?"PENDIENTE":"OBSERVADO"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="93a6e8ee-8043-483d-8bb6-d19ccb668652" style="Column header" x="9" y="243" width="152" height="18" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[V°B° Gerente Coomercial:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="5a19eb57-fd20-4f5a-92cd-450eff92a85f" style="Detail" positionType="Float" x="175" y="243" width="162" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_caja_sc_aprob2}.intValue() == 1?"APROBADO":$F{solicitud_caja_sc_aprob2}.intValue() == 2?"DENEGADO":$F{solicitud_caja_sc_aprob2}.intValue() == 0?"PENDIENTE":"OBSERVADO"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4e5525bd-2941-46c6-ad0a-3744f195e625" style="Column header" x="9" y="261" width="152" height="18" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[V°B° Administrador:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="fad4b39c-3d6f-4d1b-851c-899bf8d27494" style="Detail" positionType="Float" x="175" y="261" width="162" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_caja_sc_aprob3}.intValue() == 1?"APROBADO":$F{solicitud_caja_sc_aprob3}.intValue() == 2?"DENEGADO":$F{solicitud_caja_sc_aprob3}.intValue() == 0?"PENDIENTE":"OBSERVADO"]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="053fa3f2-947c-430c-a5ff-2d984dca2848" x="125" y="30" width="406" height="75"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="77566408-4dd1-462c-85c1-9323d5016b31" style="Detail" positionType="Float" x="135" y="30" width="396" height="75"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_caja_sc_desc}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="9b641881-115b-467f-997c-9643d3a7e390" x="150" y="378" width="272" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="4aa57212-e279-4a14-9de3-92570605824c" style="Detail" positionType="Float" x="150" y="379" width="272" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarios_usuario_nombres}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="51a7ef91-3754-4e78-8090-4d8118862762" style="Detail" positionType="Float" x="150" y="397" width="272" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Microsoft Sans Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cargos_cargo_desc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="3" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="d19cedd6-2783-43c9-82c0-0db31cb5fadd" mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#CC0000"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="7595f221-a996-4a01-8afa-b2a3511dd225" style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Microsoft Sans Serif" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="e4770dd7-7101-4f5f-a296-896a81b16d52" style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Microsoft Sans Serif" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

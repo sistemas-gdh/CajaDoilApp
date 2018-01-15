@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Tractos" table="tractos" catalog="caja_doil" optimistic-lock="version">
+        <id name="TId" type="java.lang.Integer">
+            <column name="t_id" />
+            <generator class="identity" />
+        </id>
+        <property name="TPlaca" type="string">
+            <column name="t_placa" length="10" />
+        </property>
+        <property name="TMarca" type="string">
+            <column name="t_marca" length="35" />
+        </property>
+        <property name="TModelo" type="string">
+            <column name="t_modelo" length="65" />
+        </property>
+        <property name="TConfvehi" type="string">
+            <column name="t_confvehi" length="10" />
+        </property>
+        <property name="TRegmtc" type="string">
+            <column name="t_regmtc" length="40" />
+        </property>
+        <property name="TEstado" type="java.lang.Integer">
+            <column name="t_estado" />
+        </property>
+        <set name="detalleSvs" table="detalle_sv" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="t_id" />
+            </key>
+            <one-to-many class="Modelo.DetalleSv" />
+        </set>
+        <set name="subMcses" table="sub_mcs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="t_id" />
+            </key>
+            <one-to-many class="Modelo.SubMcs" />
+        </set>
+    </class>
+</hibernate-mapping>

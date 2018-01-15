@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.SmEnc" table="sm_enc" catalog="caja_doil" optimistic-lock="version">
+        <id name="EId" type="java.lang.Long">
+            <column name="e_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="subMcs" class="Modelo.SubMcs" fetch="select">
+            <column name="sm_id" />
+        </many-to-one>
+        <property name="EDesc" type="string">
+            <column name="e_desc" length="75" />
+        </property>
+        <property name="EImporte" type="java.lang.Double">
+            <column name="e_importe" precision="22" scale="0" />
+        </property>
+        <property name="EDocfecha" type="date">
+            <column name="e_docfecha" length="10" />
+        </property>
+        <property name="EDocserie" type="string">
+            <column name="e_docserie" length="30" />
+        </property>
+        <property name="EProveedor" type="string">
+            <column name="e_proveedor" length="90" />
+        </property>
+        <property name="EDoc" type="string">
+            <column name="e_doc" length="25" />
+        </property>
+        <property name="EEstado" type="java.lang.Integer">
+            <column name="e_estado" />
+        </property>
+    </class>
+</hibernate-mapping>

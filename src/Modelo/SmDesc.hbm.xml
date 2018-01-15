@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.SmDesc" table="sm_desc" catalog="caja_doil" optimistic-lock="version">
+        <id name="deId" type="java.lang.Long">
+            <column name="de_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="subMcs" class="Modelo.SubMcs" fetch="select">
+            <column name="sm_id" />
+        </many-to-one>
+        <property name="deDesc" type="string">
+            <column name="de_desc" length="75" />
+        </property>
+        <property name="deImporte" type="java.lang.Double">
+            <column name="de_importe" precision="22" scale="0" />
+        </property>
+        <property name="deDocfecha" type="date">
+            <column name="de_docfecha" length="10" />
+        </property>
+        <property name="deDocserie" type="string">
+            <column name="de_docserie" length="30" />
+        </property>
+        <property name="deProveedor" type="string">
+            <column name="de_proveedor" length="90" />
+        </property>
+        <property name="deDoc" type="string">
+            <column name="de_doc" length="25" />
+        </property>
+        <property name="deEstado" type="java.lang.Integer">
+            <column name="de_estado" />
+        </property>
+    </class>
+</hibernate-mapping>

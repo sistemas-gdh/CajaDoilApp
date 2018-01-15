@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.SmHospedaje" table="sm_hospedaje" catalog="caja_doil" optimistic-lock="version">
+        <id name="HId" type="java.lang.Long">
+            <column name="h_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="subMcs" class="Modelo.SubMcs" fetch="select">
+            <column name="sm_id" />
+        </many-to-one>
+        <property name="HDesc" type="string">
+            <column name="h_desc" length="75" />
+        </property>
+        <property name="HImporte" type="java.lang.Double">
+            <column name="h_importe" precision="22" scale="0" />
+        </property>
+        <property name="HDocfecha" type="date">
+            <column name="h_docfecha" length="10" />
+        </property>
+        <property name="HDocserie" type="string">
+            <column name="h_docserie" length="30" />
+        </property>
+        <property name="HProveedor" type="string">
+            <column name="h_proveedor" length="90" />
+        </property>
+        <property name="HDoc" type="string">
+            <column name="h_doc" length="25" />
+        </property>
+        <property name="HEstado" type="java.lang.Integer">
+            <column name="h_estado" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.MovimientosCajasd" table="movimientos_cajasd" catalog="caja_doil" optimistic-lock="version">
+        <id name="mcdId" type="java.lang.Long">
+            <column name="mcd_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuarios" class="Modelo.Usuarios" fetch="select">
+            <column name="usuario_id" />
+        </many-to-one>
+        <property name="mcdSerie" type="string">
+            <column name="mcd_serie" length="75" />
+        </property>
+        <property name="mcdFecha" type="date">
+            <column name="mcd_fecha" length="10" />
+        </property>
+        <property name="mcdDesc" type="string">
+            <column name="mcd_desc" length="75" />
+        </property>
+        <property name="mcdImporte" type="java.lang.Double">
+            <column name="mcd_importe" precision="22" scale="0" />
+        </property>
+        <property name="mcdImportel" type="java.lang.Double">
+            <column name="mcd_importel" precision="22" scale="0" />
+        </property>
+        <property name="mcdDevolucion" type="java.lang.Double">
+            <column name="mcd_devolucion" precision="22" scale="0" />
+        </property>
+        <property name="mcdReintegro" type="java.lang.Double">
+            <column name="mcd_reintegro" precision="22" scale="0" />
+        </property>
+        <property name="mcdUsersol" type="java.lang.Integer">
+            <column name="mcd_usersol" />
+        </property>
+        <property name="mcdEstado" type="java.lang.Integer">
+            <column name="mcd_estado" />
+        </property>
+        <property name="mcdCorrelativo" type="java.lang.Long">
+            <column name="mcd_correlativo" />
+        </property>
+        <property name="mcdInout" type="java.lang.Integer">
+            <column name="mcd_inout" />
+        </property>
+        <set name="saldoCajads" table="saldo_cajad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mcd_id" />
+            </key>
+            <one-to-many class="Modelo.SaldoCajad" />
+        </set>
+        <set name="detalleMcds" table="detalle_mcd" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mcd_id" />
+            </key>
+            <one-to-many class="Modelo.DetalleMcd" />
+        </set>
+    </class>
+</hibernate-mapping>

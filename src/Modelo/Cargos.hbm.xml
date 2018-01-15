@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Cargos" table="cargos" catalog="caja_doil" optimistic-lock="version">
+        <id name="cargoId" type="java.lang.Integer">
+            <column name="cargo_id" />
+            <generator class="identity" />
+        </id>
+        <property name="cargoDesc" type="string">
+            <column name="cargo_desc" length="75" />
+        </property>
+        <set name="usuarioses" table="usuarios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cargo_id" />
+            </key>
+            <one-to-many class="Modelo.Usuarios" />
+        </set>
+    </class>
+</hibernate-mapping>

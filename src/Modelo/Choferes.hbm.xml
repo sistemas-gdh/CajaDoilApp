@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Choferes" table="choferes" catalog="caja_doil" optimistic-lock="version">
+        <id name="chId" type="java.lang.Integer">
+            <column name="ch_id" />
+            <generator class="identity" />
+        </id>
+        <property name="chNombres" type="string">
+            <column name="ch_nombres" length="150" />
+        </property>
+        <property name="chDni" type="string">
+            <column name="ch_dni" length="10" />
+        </property>
+        <property name="chBrevete" type="string">
+            <column name="ch_brevete" length="15" />
+        </property>
+        <property name="chTelefono" type="string">
+            <column name="ch_telefono" length="35" />
+        </property>
+        <property name="chTelefono2" type="string">
+            <column name="ch_telefono2" length="35" />
+        </property>
+        <property name="chSctrcodigo" type="string">
+            <column name="ch_sctrcodigo" length="25" />
+        </property>
+        <property name="chSctrdoc" type="string">
+            <column name="ch_sctrdoc" length="25" />
+        </property>
+        <property name="chEstado" type="java.lang.Integer">
+            <column name="ch_estado" />
+        </property>
+        <set name="subMcses" table="sub_mcs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ch_id" />
+            </key>
+            <one-to-many class="Modelo.SubMcs" />
+        </set>
+        <set name="detalleSvs" table="detalle_sv" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ch_id" />
+            </key>
+            <one-to-many class="Modelo.DetalleSv" />
+        </set>
+    </class>
+</hibernate-mapping>

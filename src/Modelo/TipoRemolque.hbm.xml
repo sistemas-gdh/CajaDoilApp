@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.TipoRemolque" table="tipo_remolque" catalog="caja_doil" optimistic-lock="version">
+        <id name="trId" type="java.lang.Integer">
+            <column name="tr_id" />
+            <generator class="identity" />
+        </id>
+        <property name="trDesc" type="string">
+            <column name="tr_desc" length="75" />
+        </property>
+        <set name="remolqueses" table="remolques" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tr_id" />
+            </key>
+            <one-to-many class="Modelo.Remolques" />
+        </set>
+    </class>
+</hibernate-mapping>

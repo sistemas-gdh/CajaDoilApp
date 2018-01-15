@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/01/2018 10:56:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.SolicitudViaticos" table="solicitud_viaticos" catalog="caja_doil" optimistic-lock="version">
+        <id name="svId" type="java.lang.Long">
+            <column name="sv_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuarios" class="Modelo.Usuarios" fetch="select">
+            <column name="usuario_id" />
+        </many-to-one>
+        <property name="svSerie" type="string">
+            <column name="sv_serie" length="75" />
+        </property>
+        <property name="svFechas" type="date">
+            <column name="sv_fechas" length="10" />
+        </property>
+        <property name="svDesc" type="string">
+            <column name="sv_desc" length="150" />
+        </property>
+        <property name="svImporte" type="java.lang.Double">
+            <column name="sv_importe" precision="22" scale="0" />
+        </property>
+        <property name="svAprob1" type="java.lang.Integer">
+            <column name="sv_aprob1" />
+        </property>
+        <property name="spAprob2" type="java.lang.Integer">
+            <column name="sp_aprob2" />
+        </property>
+        <property name="spAprob3" type="java.lang.Integer">
+            <column name="sp_aprob3" />
+        </property>
+        <property name="svCorrelativo" type="java.lang.Long">
+            <column name="sv_correlativo" />
+        </property>
+        <property name="svEstado" type="java.lang.Integer">
+            <column name="sv_estado" />
+        </property>
+        <set name="detalleSvs" table="detalle_sv" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sv_id" />
+            </key>
+            <one-to-many class="Modelo.DetalleSv" />
+        </set>
+    </class>
+</hibernate-mapping>
