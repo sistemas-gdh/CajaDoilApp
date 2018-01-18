@@ -470,7 +470,7 @@ public class App_LiqCCPendientes extends javax.swing.JInternalFrame {
                         corr = temppc.getMcsId() + 1;
                     }
                     String seriex = oper.generarSerie(corr, 2);
-                    MovimientosCajas mcsx = new MovimientosCajas(uu, seriex, oper.getF(), descx, mont, mont, 0.0, 0.0, uu.getUsuarioId(), 100, corr, 1);
+                    MovimientosCajas mcsx = new MovimientosCajas(uu, seriex, oper.getF(), descx, mont, mont, 0.0, 0.0, uu.getUsuarioId(), 100, corr, 1,1);
                     oper.registrar(mcsx);
                     MovimientosCajas tmcsx = oMCS.buscaMCS(oper.getNextID());
                     SaldoCajas tempsc = oSCS.getLast();
@@ -534,7 +534,7 @@ public class App_LiqCCPendientes extends javax.swing.JInternalFrame {
                         corr = temppc.getMcdId() + 1;
                     }
                     String seriex = oper.generarSerie(corr, 2);
-                    MovimientosCajas mcsx = new MovimientosCajas(uu, seriex, oper.getF(), descx, mont, mont, 0.0, 0.0, uu.getUsuarioId(), 100, corr, 1);
+                    MovimientosCajas mcsx = new MovimientosCajas(uu, seriex, oper.getF(), descx, mont, mont, 0.0, 0.0, uu.getUsuarioId(), 100, corr, 1, 1);
                     oper.registrar(mcsx);
                     MovimientosCajas tmcsx = oMCS.buscaMCS(oper.getNextID());
                     SaldoCajas tempsc = oSCS.getLast();

@@ -69,7 +69,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="LIQUIDACIONES DE VIATICOS:">
+            <TitledBorder title="SOLICITUDES DE VIATICOS:">
               <Font PropertyName="font" name="Microsoft Sans Serif" size="12" style="1"/>
               <Color PropertyName="color" blue="cc" green="66" red="0" type="rgb"/>
             </TitledBorder>

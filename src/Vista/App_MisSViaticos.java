@@ -49,7 +49,7 @@ public class App_MisSViaticos extends javax.swing.JInternalFrame {
     
     public App_MisSViaticos() {
         initComponents();
-        String Titulos[]={"ID","SERIE","FECHA","DESCRIPCIÓN","IMPORTE","LIQUIDADO","ESTADO"};
+        String Titulos[]={"ID","SERIE","FECHA","DESCRIPCIÓN","IMPORTE","ESTADO"};
         modelo.setColumnIdentifiers(Titulos);
         mod.setColumnIdentifiers(Titulos);
         oper = new Helper();
@@ -62,7 +62,6 @@ public class App_MisSViaticos extends javax.swing.JInternalFrame {
         tablas.getColumnModel().getColumn(3).setPreferredWidth(200);
         tablas.getColumnModel().getColumn(4).setPreferredWidth(50);
         tablas.getColumnModel().getColumn(5).setPreferredWidth(50);
-        tablas.getColumnModel().getColumn(6).setPreferredWidth(50);
 
 
     }
@@ -98,7 +97,7 @@ public class App_MisSViaticos extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LIQUIDACIONES DE VIATICOS:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft Sans Serif", 1, 12), new java.awt.Color(0, 102, 204))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SOLICITUDES DE VIATICOS:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft Sans Serif", 1, 12), new java.awt.Color(0, 102, 204))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);

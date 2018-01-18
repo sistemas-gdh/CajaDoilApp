@@ -24,6 +24,7 @@ public class MovimientosCajas  implements java.io.Serializable {
      private Integer mcsUsersol;
      private Integer mcsEstado;
      private Long mcsCorrelativo;
+     private Integer mcsTpin;
      private Integer mcsInout;
      private Set<DetalleMcs> detalleMcses = new HashSet<DetalleMcs>(0);
      private Set<SubMcs> subMcses = new HashSet<SubMcs>(0);
@@ -32,7 +33,7 @@ public class MovimientosCajas  implements java.io.Serializable {
     public MovimientosCajas() {
     }
 
-    public MovimientosCajas(Usuarios usuarios, String mcsSerie, Date mcsFecha, String mcsDesc, Double mcsImporte, Double mcsImportel, Double mcsDevolucion, Double mcsReintegro, Integer mcsUsersol, Integer mcsEstado, Long mcsCorrelativo, Integer mcsInout) {
+    public MovimientosCajas(Usuarios usuarios, String mcsSerie, Date mcsFecha, String mcsDesc, Double mcsImporte, Double mcsImportel, Double mcsDevolucion, Double mcsReintegro, Integer mcsUsersol, Integer mcsEstado, Long mcsCorrelativo, Integer mcsTpin,Integer mcsInout) {
         this.usuarios = usuarios;
         this.mcsSerie = mcsSerie;
         this.mcsFecha = mcsFecha;
@@ -44,6 +45,7 @@ public class MovimientosCajas  implements java.io.Serializable {
         this.mcsUsersol = mcsUsersol;
         this.mcsEstado = mcsEstado;
         this.mcsCorrelativo = mcsCorrelativo;
+        this.mcsTpin = mcsTpin;
         this.mcsInout = mcsInout;
     }
 
@@ -149,6 +151,15 @@ public class MovimientosCajas  implements java.io.Serializable {
     public void setMcsCorrelativo(Long mcsCorrelativo) {
         this.mcsCorrelativo = mcsCorrelativo;
     }
+    
+    public Integer getMcsTpin() {
+        return this.mcsTpin;
+    }
+    
+    public void setMcsTpin(Integer mcsTpin){
+        this.mcsTpin = mcsTpin;
+    }
+    
     public Integer getMcsInout() {
         return this.mcsInout;
     }

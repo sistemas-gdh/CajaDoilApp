@@ -41,6 +41,9 @@
         <property name="mcsCorrelativo" type="java.lang.Long">
             <column name="mcs_correlativo" />
         </property>
+        <property name="mcsTpin" type="java.lang.Integer">
+            <column name="mcs_tpin" />
+        </property>
         <property name="mcsInout" type="java.lang.Integer">
             <column name="mcs_inout" />
         </property>

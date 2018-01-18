@@ -175,19 +175,19 @@ public class App_Principal extends javax.swing.JFrame {
         panelSV = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablasv = new javax.swing.JTable();
-        apB = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        denB = new javax.swing.JButton();
-        obsB = new javax.swing.JButton();
-        ecch = new javax.swing.JButton();
+        ecch1 = new javax.swing.JButton();
+        obsB1 = new javax.swing.JButton();
+        denB1 = new javax.swing.JButton();
+        apB1 = new javax.swing.JButton();
         panelSCC = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablascc = new javax.swing.JTable();
-        apB1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        denB1 = new javax.swing.JButton();
-        obsB1 = new javax.swing.JButton();
-        ecch1 = new javax.swing.JButton();
+        ecch = new javax.swing.JButton();
+        obsB = new javax.swing.JButton();
+        denB = new javax.swing.JButton();
+        apB = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         archivo = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -236,15 +236,6 @@ public class App_Principal extends javax.swing.JFrame {
         tablasv.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
         jScrollPane1.setViewportView(tablasv);
 
-        apB.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        apB.setForeground(new java.awt.Color(0, 102, 51));
-        apB.setText("APROBAR");
-        apB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apBActionPerformed(evt);
-            }
-        });
-
         jButton3.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 51, 204));
         jButton3.setText("VER");
@@ -254,29 +245,38 @@ public class App_Principal extends javax.swing.JFrame {
             }
         });
 
-        denB.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        denB.setForeground(new java.awt.Color(255, 0, 0));
-        denB.setText("DENEGAR");
-        denB.addActionListener(new java.awt.event.ActionListener() {
+        ecch1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        ecch1.setText("ENVIAR A CAJA CHICA");
+        ecch1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                denBActionPerformed(evt);
+                ecch1ActionPerformed(evt);
             }
         });
 
-        obsB.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        obsB.setForeground(new java.awt.Color(255, 153, 0));
-        obsB.setText("OBSERVAR");
-        obsB.addActionListener(new java.awt.event.ActionListener() {
+        obsB1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        obsB1.setForeground(new java.awt.Color(255, 153, 0));
+        obsB1.setText("OBSERVAR");
+        obsB1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                obsBActionPerformed(evt);
+                obsB1ActionPerformed(evt);
             }
         });
 
-        ecch.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        ecch.setText("ENVIAR A CAJA CHICA");
-        ecch.addActionListener(new java.awt.event.ActionListener() {
+        denB1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        denB1.setForeground(new java.awt.Color(255, 0, 0));
+        denB1.setText("DENEGAR");
+        denB1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ecchActionPerformed(evt);
+                denB1ActionPerformed(evt);
+            }
+        });
+
+        apB1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        apB1.setForeground(new java.awt.Color(0, 102, 51));
+        apB1.setText("APROBAR");
+        apB1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apB1ActionPerformed(evt);
             }
         });
 
@@ -291,13 +291,13 @@ public class App_Principal extends javax.swing.JFrame {
                     .addGroup(panelSVLayout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
-                        .addComponent(ecch)
+                        .addComponent(ecch1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 602, Short.MAX_VALUE)
-                        .addComponent(obsB)
+                        .addComponent(obsB1)
                         .addGap(18, 18, 18)
-                        .addComponent(denB)
+                        .addComponent(denB1)
                         .addGap(18, 18, 18)
-                        .addComponent(apB)))
+                        .addComponent(apB1)))
                 .addContainerGap())
         );
         panelSVLayout.setVerticalGroup(
@@ -307,11 +307,11 @@ public class App_Principal extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(apB)
                     .addComponent(jButton3)
-                    .addComponent(denB)
-                    .addComponent(obsB)
-                    .addComponent(ecch))
+                    .addComponent(ecch1)
+                    .addComponent(obsB1)
+                    .addComponent(denB1)
+                    .addComponent(apB1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -319,15 +319,6 @@ public class App_Principal extends javax.swing.JFrame {
 
         tablascc.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
         jScrollPane2.setViewportView(tablascc);
-
-        apB1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        apB1.setForeground(new java.awt.Color(0, 102, 51));
-        apB1.setText("APROBAR");
-        apB1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apB1ActionPerformed(evt);
-            }
-        });
 
         jButton4.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(0, 51, 204));
@@ -338,29 +329,38 @@ public class App_Principal extends javax.swing.JFrame {
             }
         });
 
-        denB1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        denB1.setForeground(new java.awt.Color(255, 0, 0));
-        denB1.setText("DENEGAR");
-        denB1.addActionListener(new java.awt.event.ActionListener() {
+        ecch.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        ecch.setText("ENVIAR A CAJA CHICA");
+        ecch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                denB1ActionPerformed(evt);
+                ecchActionPerformed(evt);
             }
         });
 
-        obsB1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        obsB1.setForeground(new java.awt.Color(255, 153, 0));
-        obsB1.setText("OBSERVAR");
-        obsB1.addActionListener(new java.awt.event.ActionListener() {
+        obsB.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        obsB.setForeground(new java.awt.Color(255, 153, 0));
+        obsB.setText("OBSERVAR");
+        obsB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                obsB1ActionPerformed(evt);
+                obsBActionPerformed(evt);
             }
         });
 
-        ecch1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        ecch1.setText("ENVIAR A CAJA CHICA");
-        ecch1.addActionListener(new java.awt.event.ActionListener() {
+        denB.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        denB.setForeground(new java.awt.Color(255, 0, 0));
+        denB.setText("DENEGAR");
+        denB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ecch1ActionPerformed(evt);
+                denBActionPerformed(evt);
+            }
+        });
+
+        apB.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        apB.setForeground(new java.awt.Color(0, 102, 51));
+        apB.setText("APROBAR");
+        apB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apBActionPerformed(evt);
             }
         });
 
@@ -375,13 +375,13 @@ public class App_Principal extends javax.swing.JFrame {
                     .addGroup(panelSCCLayout.createSequentialGroup()
                         .addComponent(jButton4)
                         .addGap(18, 18, 18)
-                        .addComponent(ecch1)
+                        .addComponent(ecch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(obsB1)
+                        .addComponent(obsB)
                         .addGap(18, 18, 18)
-                        .addComponent(denB1)
+                        .addComponent(denB)
                         .addGap(18, 18, 18)
-                        .addComponent(apB1)))
+                        .addComponent(apB)))
                 .addContainerGap())
         );
         panelSCCLayout.setVerticalGroup(
@@ -391,11 +391,11 @@ public class App_Principal extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelSCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(apB1)
                     .addComponent(jButton4)
-                    .addComponent(denB1)
-                    .addComponent(obsB1)
-                    .addComponent(ecch1))
+                    .addComponent(ecch)
+                    .addComponent(obsB)
+                    .addComponent(denB)
+                    .addComponent(apB))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -682,7 +682,7 @@ public class App_Principal extends javax.swing.JFrame {
                 if(tempscs.getScsSaldo()<scx.getScImporte()){
                     JOptionPane.showMessageDialog(this, "FONDOS INSUFICIENTES");
                 }else{
-                    MovimientosCajas mcs = new MovimientosCajas(uu, serie, oper.getF(), scx.getScDesc(), scx.getScImporte(), 0.0, 0.0, 0.0, scx.getUsuarios().getUsuarioId(), 0, corr, 2);
+                    MovimientosCajas mcs = new MovimientosCajas(uu, serie, oper.getF(), scx.getScDesc(), scx.getScImporte(), 0.0, 0.0, 0.0, scx.getUsuarios().getUsuarioId(), 0, corr,1,2);
                     oper.registrar(mcs);
                     MovimientosCajas tmcs = oMCS.buscaMCS(oper.getNextID());
                     SaldoCajas scss = new SaldoCajas(tmcs, 0.0, scx.getScImporte(), tempscs.getScsSaldo() - scx.getScImporte(), 0);

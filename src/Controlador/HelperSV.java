@@ -96,7 +96,7 @@ public class HelperSV {
         {
             SolicitudViaticos p = (SolicitudViaticos) iter.next();
            
-            modelo.addRow(new Object[]{p.getSvId(),p.getSvSerie(),p.getSvFechas(),p.getSvDesc(),p.getUsuarios().getUsuarioNombres(),p.getUsuarios().getDepartamentos().getDptoDesc(),p.getSvImporte(),oper.validarESC(p.getSvEstado())});   
+            modelo.addRow(new Object[]{p.getSvId(),p.getSvSerie(),p.getSvFechas(),p.getSvDesc(),p.getSvImporte(),oper.validarESC(p.getSvEstado())});   
                     
                
         }

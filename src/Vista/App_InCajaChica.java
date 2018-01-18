@@ -208,7 +208,7 @@ public class App_InCajaChica extends javax.swing.JInternalFrame {
             }
 
             String serie = oper.generarSerie(corr, 2);
-            MovimientosCajas mcsx = new MovimientosCajas(uu, serie, fechai.getDate(), desc.getText(), mont, mont, 0.0, 0.0, uu.getUsuarioId(), 100, corr, 1);
+            MovimientosCajas mcsx = new MovimientosCajas(uu, serie, fechai.getDate(), desc.getText(), mont, mont, 0.0, 0.0, uu.getUsuarioId(), 100, corr, 1,1);
             oper.registrar(mcsx);
             MovimientosCajas tmcsx = oMCS.buscaMCS(oper.getNextID());
             SaldoCajas tempsc = oSCS.getLast();
