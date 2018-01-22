@@ -8,6 +8,7 @@ package Vista;
 import Conn.Conexion;
 import Controlador.Helper;
 import Controlador.HelperDSCC;
+import Controlador.HelperDSV;
 import Controlador.HelperMCD;
 import Controlador.HelperMCS;
 import Controlador.HelperSCC;
@@ -19,13 +20,15 @@ import Controlador.HelperUsuarios;
 import Modelo.DetalleMcd;
 import Modelo.DetalleMcs;
 import Modelo.DetalleSc;
+import Modelo.DetalleSv;
 import Modelo.MovimientosCajas;
 import Modelo.MovimientosCajasd;
 import Modelo.SaldoCajad;
 import Modelo.SaldoCajas;
 import Modelo.SolicitudCaja;
+import Modelo.SolicitudViaticos;
+import Modelo.SubMcs;
 import Modelo.Usuarios;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -84,6 +87,7 @@ public class App_Principal extends javax.swing.JFrame {
     HelperMCD oMCD;
     HelperSCS oSCS;
     HelperSCD oSCD;
+    HelperDSV oDSV;
     HelperSV oSV;
     
     private Timer timer;
@@ -132,6 +136,7 @@ public class App_Principal extends javax.swing.JFrame {
         oSCS = new HelperSCS();
         oSCD = new HelperSCD();
         oSV = new HelperSV();
+        oDSV = new HelperDSV();
         
         String t[]={"ID","SERIE","FECHA","DESCRIPCION","RESPONSABLE","AREA","IMPORTE","MONEDA","G.GENERAL","G.COMERCIAL","ADMIN.","BYPASS"};
         modelo.setColumnIdentifiers(t);
@@ -149,6 +154,8 @@ public class App_Principal extends javax.swing.JFrame {
         tablascc.getColumnModel().getColumn(9).setPreferredWidth(35);
         tablascc.getColumnModel().getColumn(10).setPreferredWidth(35);
         tablascc.getColumnModel().getColumn(11).setPreferredWidth(35);
+        
+        
         md.setColumnIdentifiers(t);
         md = oSV.obtenerSV(md,permisos,codigoU);
         tablasv.setModel(md);
@@ -292,7 +299,7 @@ public class App_Principal extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
                         .addComponent(ecch1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 602, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 567, Short.MAX_VALUE)
                         .addComponent(obsB1)
                         .addGap(18, 18, 18)
                         .addComponent(denB1)
@@ -592,7 +599,7 @@ public class App_Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(escritorio)
                 .addContainerGap())
@@ -613,24 +620,24 @@ public class App_Principal extends javax.swing.JFrame {
 
     private void obsBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obsBActionPerformed
         // TODO add your handling code here:
-        int fila = tablasv.getSelectedRow();
-        int codscc = Integer.parseInt(tablasv.getValueAt(fila, 0).toString());
+        int fila = tablascc.getSelectedRow();
+        int codscc = Integer.parseInt(tablascc.getValueAt(fila, 0).toString());
         oSCC.aodSCC(codscc, 3, Integer.parseInt(codigo.getText()),4);
         updateT();
     }//GEN-LAST:event_obsBActionPerformed
 
     private void denBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_denBActionPerformed
         // TODO add your handling code here:
-        int fila = tablasv.getSelectedRow();
-        int codscc = Integer.parseInt(tablasv.getValueAt(fila, 0).toString());
+        int fila = tablascc.getSelectedRow();
+        int codscc = Integer.parseInt(tablascc.getValueAt(fila, 0).toString());
         oSCC.aodSCC(codscc, 2, Integer.parseInt(codigo.getText()),5);
         updateT();
     }//GEN-LAST:event_denBActionPerformed
 
     private void apBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apBActionPerformed
         // TODO add your handling code here:
-        int fila = tablasv.getSelectedRow();
-        int codscc = Integer.parseInt(tablasv.getValueAt(fila, 0).toString());
+        int fila = tablascc.getSelectedRow();
+        int codscc = Integer.parseInt(tablascc.getValueAt(fila, 0).toString());
         oSCC.aodSCC(codscc, 1, Integer.parseInt(codigo.getText()),1);
         updateT();
     }//GEN-LAST:event_apBActionPerformed
@@ -657,12 +664,12 @@ public class App_Principal extends javax.swing.JFrame {
 
     private void ecchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ecchActionPerformed
         // TODO add your handling code here:
-        int fila = tablasv.getSelectedRow();
-        String mon = tablasv.getValueAt(fila, 7).toString();
+        int fila = tablascc.getSelectedRow();
+        String mon = tablascc.getValueAt(fila, 7).toString();
         Usuarios uu = oU.buscaUsuarios(Integer.parseInt(codigo.getText()));
-        long codSC = Long.parseLong(tablasv.getValueAt(fila, 0).toString());
+        long codSC = Long.parseLong(tablascc.getValueAt(fila, 0).toString());
         SolicitudCaja scx = oSCC.buscaSCC(codSC);
-        String aprob1 = tablasv.getValueAt(fila, 11).toString();
+        String aprob1 = tablascc.getValueAt(fila, 11).toString();
         if (aprob1.equalsIgnoreCase("APROBADA")) {
             if(mon.equalsIgnoreCase("SOLES")){
              /*GET SERIE DE MOVIMIENTO*/   
@@ -811,6 +818,10 @@ public class App_Principal extends javax.swing.JFrame {
 
     private void apB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apB1ActionPerformed
         // TODO add your handling code here:
+        int fila = tablasv.getSelectedRow();
+        int codscc = Integer.parseInt(tablasv.getValueAt(fila, 0).toString());
+        oSV.aodSV(codscc, 1, Integer.parseInt(codigo.getText()),1);
+        updateTSV();
     }//GEN-LAST:event_apB1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -819,14 +830,72 @@ public class App_Principal extends javax.swing.JFrame {
 
     private void denB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_denB1ActionPerformed
         // TODO add your handling code here:
+        int fila = tablasv.getSelectedRow();
+        int codscc = Integer.parseInt(tablasv.getValueAt(fila, 0).toString());
+        oSV.aodSV(codscc, 2, Integer.parseInt(codigo.getText()),5);
+        updateTSV();
     }//GEN-LAST:event_denB1ActionPerformed
 
     private void obsB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obsB1ActionPerformed
         // TODO add your handling code here:
+        int fila = tablasv.getSelectedRow();
+        int codscc = Integer.parseInt(tablasv.getValueAt(fila, 0).toString());
+        oSV.aodSV(codscc, 3, Integer.parseInt(codigo.getText()), 4);
+        updateTSV();
     }//GEN-LAST:event_obsB1ActionPerformed
 
     private void ecch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ecch1ActionPerformed
         // TODO add your handling code here:
+        int fila = tablasv.getSelectedRow();
+        Usuarios uu = oU.buscaUsuarios(Integer.parseInt(codigo.getText()));
+        long codSV = Long.parseLong(tablasv.getValueAt(fila, 0).toString());
+        SolicitudViaticos scx = oSV.buscaSV(codSV);
+        String aprob1 = tablasv.getValueAt(fila, 11).toString();
+        if (aprob1.equalsIgnoreCase("APROBADA")) {
+             /*GET SERIE DE MOVIMIENTO*/   
+            MovimientosCajas temppc = oMCS.getLast();
+            long corr = 0;
+            if (temppc == null) {
+                corr = 1;
+            } else {
+                corr = temppc.getMcsId() + 1;
+            }
+            String serie = oper.generarSerie(corr, 2);
+            /*FIN GET SERIE DE MOVIMIENTO*/
+            SaldoCajas tempscs = oSCS.getLast();
+            if(tempscs == null){
+                JOptionPane.showMessageDialog(this, "NO ES POSIBLE PROCESAR SU SOLICITUD");
+            }else{
+                if(tempscs.getScsSaldo()<scx.getSvImporte()){
+                    JOptionPane.showMessageDialog(this, "FONDOS INSUFICIENTES");
+                }else{
+                    MovimientosCajas mcs = new MovimientosCajas(uu, serie, oper.getF(), scx.getSvDesc(), scx.getSvImporte(), 0.0, 0.0, 0.0, scx.getUsuarios().getUsuarioId(), 0, corr,2,2);
+                    oper.registrar(mcs);
+                    MovimientosCajas tmcs = oMCS.buscaMCS(oper.getNextID());
+                    SaldoCajas scss = new SaldoCajas(tmcs, 0.0, scx.getSvImporte(), tempscs.getScsSaldo() - scx.getSvImporte(), 0);
+                    oper.registrar(scss);
+                    
+                    
+                    
+                    
+                    List<DetalleSv> listaa = oDSV.searchDSV(codSV);
+                    Iterator<DetalleSv> iter = listaa.iterator();
+
+                    while (iter.hasNext()) {
+                        DetalleSv p = (DetalleSv) iter.next();
+                        System.out.println("xxxxxx");
+                        SubMcs sm = new SubMcs(p.getChoferes(),tmcs,p.getRemolques(),p.getServTransporte(),p.getTractos(),p.getDsvViaticos(),p.getDsvHospedaje(),p.getDsvEncarpe(),
+                        p.getDsvDesencarpe(),p.getDsvVigilancia(),p.getDsvPropina(),p.getDsvSt(),0.0,0.0,0.0,0);
+                        oper.registrar(sm);
+                    }
+                    oSV.aESCC(scx.getSvId(), 2);
+                    updateTSV();
+                } 
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "IMPOSIBLE DE COMPLETAR OPERACION");
+        }
+        
     }//GEN-LAST:event_ecch1ActionPerformed
 
     /**

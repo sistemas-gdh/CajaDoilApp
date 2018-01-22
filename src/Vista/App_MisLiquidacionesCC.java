@@ -39,7 +39,7 @@ public class App_MisLiquidacionesCC extends javax.swing.JInternalFrame {
     public void updateT(int estado,int band,String busq) {
         oper.limpiaTabla(modelo, tablas);
         if(band == 1){
-           modelo = oMCS.getMcsByUser(modelo, Integer.parseInt(App_Principal.codigo.getText()),estado); 
+           modelo = oMCS.getMcsByUser(modelo, Integer.parseInt(App_Principal.codigo.getText()),estado,1); 
         }else{
            modelo = oMCS.getMcsByUserSerie(modelo, Integer.parseInt(App_Principal.codigo.getText()), busq);
         }
@@ -65,7 +65,7 @@ public class App_MisLiquidacionesCC extends javax.swing.JInternalFrame {
         oper = new Helper();
         oMCD = new HelperMCD();
         oMCS = new HelperMCS();
-        modelo = oMCS.getMcsByUser(modelo, Integer.parseInt(App_Principal.codigo.getText()),0);
+        modelo = oMCS.getMcsByUser(modelo, Integer.parseInt(App_Principal.codigo.getText()),0,1);
         mod = oMCD.getMcdByUser(mod, Integer.parseInt(App_Principal.codigo.getText()),0);
         tablas.setModel(modelo);
         tablad.setModel(mod);

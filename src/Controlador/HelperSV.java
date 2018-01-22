@@ -49,7 +49,7 @@ public class HelperSV {
         {
             SolicitudViaticos p = (SolicitudViaticos) iter.next();
             if(bypass==3 || bypass == 2){
-                modelo.addRow(new Object[]{p.getSvId(),p.getSvSerie(),p.getSvFechas(),p.getSvDesc(),p.getUsuarios().getUsuarioNombres(),p.getUsuarios().getDepartamentos().getDptoDesc(),p.getSvImporte(),oper.validarAprob(p.getSvAprob1()),oper.validarAprob(p.getSpAprob2()),oper.validarAprob(p.getSpAprob3()),oper.validarESC(p.getSvEstado())});
+                modelo.addRow(new Object[]{p.getSvId(),p.getSvSerie(),p.getSvFechas(),p.getSvDesc(),p.getUsuarios().getUsuarioNombres(),p.getUsuarios().getDepartamentos().getDptoDesc(),p.getSvImporte(),"SOLES",oper.validarAprob(p.getSvAprob1()),oper.validarAprob(p.getSpAprob2()),oper.validarAprob(p.getSpAprob3()),oper.validarESC(p.getSvEstado())});
             }else{
                 modelo.addRow(new Object[]{p.getSvId(),p.getSvSerie(),p.getSvFechas(),p.getSvDesc(),p.getUsuarios().getUsuarioNombres(),p.getUsuarios().getDepartamentos().getDptoDesc(),p.getSvImporte(),oper.validarESC(p.getSvEstado())});   
             }
@@ -141,7 +141,7 @@ public class HelperSV {
     }
 
     
-    public void aodSCC(long codSV,int valor,int llave,int estado){
+    public void aodSV(long codSV,int valor,int llave,int estado){
         try{
                  SessionFactory sesion = NewHibernateUtil.getSessionFactory();
         Session session;
@@ -225,7 +225,7 @@ public class HelperSV {
         }
     }
     
-    public SolicitudViaticos buscaSCC(long id)
+    public SolicitudViaticos buscaSV(long id)
     {
         SolicitudViaticos p;
         SessionFactory sesion = NewHibernateUtil.getSessionFactory();

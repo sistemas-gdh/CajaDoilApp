@@ -74,5 +74,6 @@ Contributor(s):
     <mapping resource="Modelo/DetalleSv.hbm.xml"/>
     <mapping resource="Modelo/SaldoCajas.hbm.xml"/>
     <mapping resource="Modelo/SolicitudCaja.hbm.xml"/>
+    <mapping resource="Modelo/SmPeajes.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

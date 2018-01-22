@@ -6,7 +6,7 @@
 package Vista;
 
 import Controlador.Helper;
-import Controlador.HelperSV;
+import Controlador.HelperMCS;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -24,15 +24,14 @@ public class App_PreLiqViaticos extends javax.swing.JInternalFrame {
      * Creates new form App_PreLiqViaticos
      */
     DefaultTableModel modelo = new DefaultTableModel();
-    HelperSV oSV;
+    HelperMCS oMCS;
     Helper oper;   
    
     public void updateT() {
         oper.limpiaTabla(modelo, tabla);
-        modelo = oSV.searchSV(modelo, Integer.parseInt(App_Principal.codigo.getText()),0);
+        modelo = oMCS.getMcsByUser(modelo, Integer.parseInt(App_Principal.codigo.getText()),0,2);
         tabla.setModel(modelo);
     }
-
     
         private Timer timer;
     /*
@@ -55,7 +54,6 @@ public class App_PreLiqViaticos extends javax.swing.JInternalFrame {
                     public void actionPerformed(ActionEvent event)
                     {
                         updateT();
-
                     }
                 };
  
@@ -66,16 +64,15 @@ public class App_PreLiqViaticos extends javax.swing.JInternalFrame {
         });
     }
     
+    
     public App_PreLiqViaticos() {
         initComponents();
-                initComponents();
         String Titulos[]={"ID","SERIE","FECHA","DESCRIPCIÓN","IMPORTE","LIQUIDADO","ESTADO"};
         modelo.setColumnIdentifiers(Titulos);
         oper = new Helper();
-        oSV = new HelperSV();
-        modelo = oSV.searchSV(modelo, Integer.parseInt(App_Principal.codigo.getText()),0);
+        oMCS = new HelperMCS();
+        modelo = oMCS.getMcsByUser(modelo, Integer.parseInt(App_Principal.codigo.getText()),0,2);
         tabla.setModel(modelo);
-        
         tabla.getColumnModel().getColumn(0).setPreferredWidth(1);// 
         tabla.getColumnModel().getColumn(1).setPreferredWidth(125);
         tabla.getColumnModel().getColumn(2).setPreferredWidth(75);
@@ -101,6 +98,9 @@ public class App_PreLiqViaticos extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "VALIDACIONES PENDIENTES DE VIATICOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft Sans Serif", 1, 14))); // NOI18N
 
         jScrollPane1.setViewportView(tabla);
@@ -111,14 +111,14 @@ public class App_PreLiqViaticos extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -157,9 +157,9 @@ public class App_PreLiqViaticos extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

@@ -33,6 +33,9 @@ public class App_Login extends javax.swing.JFrame {
                   App_Principal.obsB.setEnabled(false);
                   App_Principal.denB.setEnabled(false);
                   App_Principal.apB.setEnabled(false);
+                  App_Principal.obsB1.setEnabled(false);
+                  App_Principal.denB1.setEnabled(false);
+                  App_Principal.apB1.setEnabled(false);
                   App_Principal.gerencia.setVisible(false);
                   App_Principal.transportes.setVisible(false);
                 break;

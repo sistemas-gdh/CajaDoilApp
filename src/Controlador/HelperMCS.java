@@ -47,13 +47,13 @@ public class HelperMCS {
         return modelo; 
     }
      
-    public DefaultTableModel getMcsByUser(DefaultTableModel modelo,int ucod,int estado)
+    public DefaultTableModel getMcsByUser(DefaultTableModel modelo,int ucod,int estado,int tpin)
     {
         SessionFactory sesion = NewHibernateUtil.getSessionFactory();
         Session session;
         session = sesion.openSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("from MovimientosCajas p where p.mcsUsersol = "+ucod + " AND p.mcsEstado = "+estado);
+        Query q = session.createQuery("from MovimientosCajas p where p.mcsUsersol = "+ucod + " AND p.mcsTpin = "+tpin+" AND p.mcsEstado = "+estado);
         List<MovimientosCajas> lista = (List<MovimientosCajas>) q.list();
         Iterator<MovimientosCajas> iter=lista.iterator();
         tx.commit();

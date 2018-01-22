@@ -53,7 +53,7 @@ public class App_DLiqCC extends javax.swing.JInternalFrame {
         if(valor == 1){
             DefaultTableModel mod = (DefaultTableModel) App_PreLiqCaja.tablals.getModel();
             oper.limpiaTabla(mod, App_PreLiqCaja.tablals);
-            mod = oMCS.getMcsByUser(mod, Integer.parseInt(App_Principal.codigo.getText()),0);
+            mod = oMCS.getMcsByUser(mod, Integer.parseInt(App_Principal.codigo.getText()),0,1);
             App_PreLiqCaja.tablals.setModel(mod);
         }else{
             DefaultTableModel mod = (DefaultTableModel) App_PreLiqCaja.tablald.getModel();

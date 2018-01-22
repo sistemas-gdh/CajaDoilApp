@@ -32,7 +32,7 @@ public class App_PreLiqCaja extends javax.swing.JInternalFrame {
    
     public void updateT() {
         oper.limpiaTabla(modelo, tablals);
-        modelo = oMCS.getMcsByUser(modelo, Integer.parseInt(App_Principal.codigo.getText()),0);
+        modelo = oMCS.getMcsByUser(modelo, Integer.parseInt(App_Principal.codigo.getText()),0,1);
         tablals.setModel(modelo);
     }
     public void updateTD() {
@@ -82,7 +82,7 @@ public class App_PreLiqCaja extends javax.swing.JInternalFrame {
         oper = new Helper();
         oMCD = new HelperMCD();
         oMCS = new HelperMCS();
-        modelo = oMCS.getMcsByUser(modelo, Integer.parseInt(App_Principal.codigo.getText()),0);
+        modelo = oMCS.getMcsByUser(modelo, Integer.parseInt(App_Principal.codigo.getText()),0,1);
         mod = oMCD.getMcdByUser(mod, Integer.parseInt(App_Principal.codigo.getText()),0);
         tablals.setModel(modelo);
         tablald.setModel(mod);

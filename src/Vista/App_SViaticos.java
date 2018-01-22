@@ -248,7 +248,7 @@ public class App_SViaticos extends javax.swing.JInternalFrame {
         
 
         
-        SolicitudViaticos pdc = oSV.buscaSCC(oper.getNextID());
+        SolicitudViaticos pdc = oSV.buscaSV(oper.getNextID());
 
         Iterator<Object[]> itrPartidos = lista.iterator();
         while (itrPartidos.hasNext()) {
